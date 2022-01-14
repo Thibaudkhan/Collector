@@ -3,15 +3,15 @@ FROM node:lts
 ENV PORT 3000
 
 # Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/src/app/frontend
+WORKDIR /usr/src/app/frontend
 
 # Installing dependencies
-COPY package.json /usr/src/app/
+COPY package.json /usr/src/app/frontend/
 RUN npm install
 
 # Copying source files
-COPY . /usr/src/app
+COPY . /usr/src/app/frontend
 
 # Building app
 RUN npm run build
