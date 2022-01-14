@@ -5,9 +5,19 @@ services:
     ports:
       - 3000:3000
     build:
-      context: frontend
+      context: ./frontend
       dockerfile: Dockerfile
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
       - /usr/src/app/.next
+  web:
+    ports:
+      - 8080:8080
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    command: npm run start
+    volumes:
+       - ./server:/usr/src/app/server
+       - /usr/src/app/server/nodes_modules
