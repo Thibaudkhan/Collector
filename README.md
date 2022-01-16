@@ -1,17 +1,15 @@
 # Collector
 
-##Docker
 
-###Démarer le frontend 
+## Démrarer le projet
+Remplir le .env pour cela il faut copier coller .env.example puis remplir les lignes avec les information suivantes 
+- true
+- root
+- collector
 
-Il est conseillé de build le Dockerfile avant de lancer le docker-compose. <br/>
-Pour cela il faut se rendre sur le dossier frontend: <br/> 
-``cd ./frontend`` <br/><br/>
-Lancer la commande suivante : <br/>
-`` docker build -t my-project . ``<br/><br/>
-Il faut ensuite lancer le docker-compose : <br/>
-```cd ..``` <br/>
+Lancer l'ensemble des conteneurs pour pouvoir coder<br/>
 ``docker-compose up``<br/><br/>
+C'est bon quand il y aura une modification back ou front cela se mettra automatiquement à jour.
 
-Le serveur frontend est lancé, si le code est modifié les modifications sont direcment appliquées.<br/>
-La page internet est aussi reload avec les nouvelles données.
+
+<br/>

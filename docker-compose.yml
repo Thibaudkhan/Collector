@@ -19,8 +19,8 @@ services:
       dockerfile: Dockerfile
     command: npm run other
     environment:
-      - MYSQL_DATABASE=collector
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=${MYSQL_ALLOW_EMPTY_PASSWORD}
       - MYSQL_HOST=db
     volumes:
       - ./server:/usr/src/app/server
@@ -31,6 +31,6 @@ services:
   db:
       build: ./database
       environment:
-        - MYSQL_ALLOW_EMPTY_PASSWORD=true
-        - MYSQL_DATABASE=collector
+        - MYSQL_ALLOW_EMPTY_PASSWORD=${MYSQL_ALLOW_EMPTY_PASSWORD}
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
       restart: always
