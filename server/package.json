@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js -e js,graphql,gql",
     "start": "nodemon src/index.js localhost 8080",
-    "other": "nodemon src/index.js"
+    "other": "nodemon -L src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "mysql": "^2.18.1"
   }
 }

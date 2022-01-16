@@ -17,7 +17,20 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    command: npm run start
+    command: npm run other
+    environment:
+      - MYSQL_DATABASE=collector
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_HOST=db
     volumes:
-       - ./server:/usr/src/app/server
-       - /usr/src/app/server/nodes_modules
+      - ./server:/usr/src/app/server
+      - /usr/src/app/server/nodes_modules
+    depends_on:
+      - db
+    restart: on-failure
+  db:
+      build: ./database
+      environment:
+        - MYSQL_ALLOW_EMPTY_PASSWORD=true
+        - MYSQL_DATABASE=collector
+      restart: always

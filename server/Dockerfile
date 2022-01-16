@@ -1,9 +1,9 @@
 FROM node:lts
 
-WORKDIR /app
-COPY package.json /app
+WORKDIR /usr/src/app/server
+COPY package.json /usr/src/app/server
 RUN npm install
-COPY . /app
+COPY . /usr/src/app/server
 CMD [ "npm","run", "other" ]
 
 
