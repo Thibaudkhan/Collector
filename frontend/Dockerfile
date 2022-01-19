@@ -7,15 +7,15 @@ RUN mkdir -p /usr/src/app/frontend
 WORKDIR /usr/src/app/frontend
 
 # Installing dependencies
-COPY package.json /usr/src/app/frontend/
-RUN npm install
+COPY package.json yarn.lock /usr/src/app/frontend/
+RUN yarn install
 
 # Copying source files
 COPY . /usr/src/app/frontend
 
 # Building app
-RUN npm run build
+RUN yarn build
 EXPOSE 3000
 
 # Running the app
-CMD "npm" "run" "dev"
+CMD "yarn" "dev"
