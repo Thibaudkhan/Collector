@@ -5,6 +5,7 @@ const mysql      = require('mysql');
 const app = express();
 const PORT = 8080;
 const HOST = '0.0.0.0';
+const authRoutes = require("../Routes/authRoutes");
 
 const connection = mysql.createConnection({
     connectionLimit: 10,
@@ -14,6 +15,7 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE || "collector",
 });
 
+app.use(authRoutes)
 
 
 app.get("/", (req, res) => {
