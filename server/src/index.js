@@ -1,8 +1,9 @@
 'use strict';
 
 const express = require('express');
-const mysql      = require('mysql');
+const mysql   = require('mysql');
 const app = express();
+const cors = require('cors')
 const PORT = 8080;
 const HOST = '0.0.0.0';
 const authRoutes = require("../Routes/authRoutes");
@@ -15,11 +16,10 @@ const connection = mysql.createConnection({
     password: process.env.MYSQL_PASSWORD || "root",
     database: process.env.MYSQL_DATABASE || "collector",
 });
-
+app.use(cors("http://localhost"))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(authRoutes)
-
 
 app.get("/", (req, res) => {
     connection.query("SELECT * FROM followers", (err, rows) => {

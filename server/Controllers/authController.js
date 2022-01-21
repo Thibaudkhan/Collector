@@ -5,7 +5,6 @@ let authController = {}
 
 authController.userConnection = (req,res)=>{
     const {email,password} = req
-
     if(authSystem.checkUser(email,password))
     {
         let token =    jwt.sign({
@@ -14,7 +13,7 @@ authController.userConnection = (req,res)=>{
 
 
         res.cookie('jwt', token)
-        res.send(`Log in success token : ${token} `)
+        res.send(`${token}`)
 
     }else{
         res.send('Invalid login credentials')

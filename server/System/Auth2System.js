@@ -22,14 +22,12 @@ opts.secretOrKey = 'secret';
 
 
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-
     if (passport.checkUser(jwt_payload.data.email,jwt_payload.data.password)) {
         return done(null, jwt_payload.data)
     } else {
         return done(null, false);
     }
 }));
-
 
 passport.serializeUser(function(user, cb) {
     console.log('I should have jack ')
@@ -43,6 +41,8 @@ passport.deserializeUser(function(obj, cb) {
 
 
 passport.checkUser =(email,password)=>{
+    console.log("email" + email)
+    console.log("pass" + password)
     for (let i in DATA) {
         if(email==DATA[i].email && (password==DATA[i].password))
             return true
