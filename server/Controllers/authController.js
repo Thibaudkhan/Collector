@@ -13,7 +13,7 @@ authController.signIn = async (req, res) => {
             data: req
         }, 'secret', {expiresIn: '1h'});
         res.cookie('jwt', token)
-        res.send(`Log in success token : ${token} `)
+        res.send(`${token}`)
 
     } else {
         res.send('Invalid login credentials')
