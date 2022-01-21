@@ -6,12 +6,12 @@ ENV PORT 3000
 RUN mkdir -p /usr/src/app/frontend
 WORKDIR /usr/src/app/frontend
 
+# Copying source files
+COPY . /usr/src/app/frontend
+
 # Installing dependencies
 COPY package.json yarn.lock /usr/src/app/frontend/
 RUN yarn install
-
-# Copying source files
-COPY . /usr/src/app/frontend
 
 # Building app
 RUN yarn build
