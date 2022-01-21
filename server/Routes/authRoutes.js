@@ -19,8 +19,18 @@ router.get('/auth/email', (req, res)=>{
 })
 
 
-router.post('/auth/email', (req, res)=>{
-    authController.userConnection(req.body,res);
+router.post('/auth/email', async (req, res)=>{
+    await authController.signIn(req.body,res);
+
+})
+
+router.get('/auth/getMail', async (req, res,next)=>{
+    await authController.select(req,res);
+
+})
+
+router.get('/auth/create', (req, res)=>{
+    authController.createAccount(req,res);
 
 })
 
