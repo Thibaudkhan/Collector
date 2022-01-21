@@ -7,10 +7,10 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    restart: always
     volumes:
       - ./frontend:/usr/src/app/frontend
       - /usr/src/app/frontend/.next
+      - /usr/src/app/frontend/node_modules
   web:
     ports:
       - 8080:8080
