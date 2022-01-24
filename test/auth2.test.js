@@ -1,9 +1,9 @@
-const authController = require("../Controllers/authController");
-const model = require("../Models/authModel");
 
 test('testtttt', () => {
-    let test = model.getAllUsers();
-    console.log(test);
+    //let test = model.getAllUsers();
+    console.log("coucou");
+    expect("test").not.toBe("pas test");
+
 });
 
 /*
