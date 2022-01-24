@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../Controllers/authController');
-const authSystem = require('../System/Auth2System');
+const authSystem = require('../System/auth2System');
 
 const cookieParser = require('cookie-parser')
 
@@ -26,10 +26,13 @@ router.post('/auth/email', async (req, res)=>{
 
 router.get('/auth/getMail', async (req, res,next)=>{
     await authController.select(req,res);
-
 })
 
-router.get('/auth/create', (req, res)=>{
+router.get('/auth/getUsers', async (req, res,next)=>{
+    await authController.selectUsers(req,res);
+})
+
+router.post('/auth/create', (req, res)=>{
     authController.createAccount(req,res);
 
 })
