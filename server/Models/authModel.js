@@ -29,9 +29,9 @@ AuthModel.insert = (email,password,firstname,lastname)=> {
     return new Promise((resolve,reject)=>{
         connection.query('Insert INTO user (email, password,firstname,lastname) Values(?,?,?,?) ',[email,password,firstname,lastname],(err,result)=>{
             if(err){
-                return reject(err)
+                return reject("fail promise");
             }
-            return resolve(result[0])
+            return resolve(result.affectedRows)
         })
     })
 }

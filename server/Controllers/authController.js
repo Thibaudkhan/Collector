@@ -19,9 +19,30 @@ authController.signIn = async (req, res) => {
 }
 
 authController.createAccount = async (req,res) => {
-    await authModel.insert(req.body.email, req.body.password, req.body.name, req.body.lastname);
-    console.log("user mail ");
-    res.send("user mail : Success ");
+    let {email,password,name,lastname} = req.body
+    const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    try{
+        if (email === "" || password === "" || name === "" || lastname === "" ){
+            res.sendStatus(400);
+            return;
+        }
+        if (!email.match(regexEmail)) {
+            res.sendStatus(400);
+            return;
+        }
+
+        // test http params
+        if(await authModel.insert(email,password,name,lastname)){
+            res.sendStatus(200);
+            return;
+        }
+    }catch (e){
+        res.sendStatus(400);
+
+    }
+
+
 }
 
 authController.select = async (req,res) => {
